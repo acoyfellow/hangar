@@ -44,7 +44,7 @@ pnpm proof
 
 `pnpm proof` runs six tasks through the API, then drives the website in headless Chrome. It exits 0 only when every check passes, and writes [`receipts/gate.json`](receipts/gate.json).
 
-Last local run: a ready box was ready a median **6 ms** after launch; a fresh box took **1,060 ms**.
+Last local run: a ready box was ready a median **23 ms** after launch; a fresh box took **1,033 ms**.
 
 `alchemy dev` reads the built website once at startup. After you change `apps/web`, stop and run `pnpm dev` again.
 

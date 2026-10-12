@@ -1,52 +1,52 @@
 {
   "gate": "pass",
-  "at": "2026-10-12T14:34:11.495Z",
+  "at": "2026-10-12T14:36:11.044Z",
   "baseUrl": "http://127.0.0.1:1337",
   "boxReadyMedianMs": {
-    "ready": 6,
-    "fresh": 1060
+    "ready": 23,
+    "fresh": 1033
   },
   "samples": [
     {
       "path": "pooled",
       "runVia": "warmed",
       "boxSource": "ready",
-      "boxReadyMs": 6,
-      "finishedMs": 348
+      "boxReadyMs": 24,
+      "finishedMs": 1352
     },
     {
       "path": "cold",
       "runVia": "cold",
       "boxSource": "fresh",
-      "boxReadyMs": 1060,
-      "finishedMs": 1350
+      "boxReadyMs": 1033,
+      "finishedMs": 1340
     },
     {
       "path": "pooled",
       "runVia": "warmed",
       "boxSource": "ready",
-      "boxReadyMs": 17,
-      "finishedMs": 365
+      "boxReadyMs": 23,
+      "finishedMs": 1344
     },
     {
       "path": "cold",
       "runVia": "cold",
       "boxSource": "fresh",
-      "boxReadyMs": 1076,
-      "finishedMs": 1343
+      "boxReadyMs": 1032,
+      "finishedMs": 1334
     },
     {
       "path": "pooled",
       "runVia": "warmed",
       "boxSource": "ready",
-      "boxReadyMs": 6,
-      "finishedMs": 340
+      "boxReadyMs": 10,
+      "finishedMs": 1333
     },
     {
       "path": "cold",
       "runVia": "cold",
       "boxSource": "fresh",
-      "boxReadyMs": 1059,
+      "boxReadyMs": 1039,
       "finishedMs": 1338
     }
   ],
@@ -77,7 +77,7 @@
     {
       "name": "ready box is faster than fresh box",
       "passed": true,
-      "detail": "median 6 ms vs 1060 ms"
+      "detail": "median 23 ms vs 1033 ms"
     },
     {
       "name": "allowed call reached the service",
