@@ -4,8 +4,13 @@
   "type": "module",
   "packageManager": "pnpm@12.10.1",
   "scripts": {
-    "dev": "pnpm --filter @hangar/worker dev",
+    "dev": "pnpm --filter @hangar/web build && pnpm --filter @hangar/worker dev",
+    "build": "pnpm --filter @hangar/web build",
+    "test": "pnpm --filter @hangar/web test",
     "typecheck": "pnpm -r typecheck",
     "proof": "bash scripts/proof.sh"
+  },
+  "devDependencies": {
+    "playwright": "1.64.0"
   }
 }

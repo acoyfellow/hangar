@@ -29,7 +29,14 @@ const hangarHandlers = HttpApiBuilder.group(HangarApi, "hangar", (handlers) =>
 
 export default class HangarWorker extends Cloudflare.Worker<HangarWorker>()(
   "HangarWorker",
-  { main: import.meta.url },
+  {
+    main: import.meta.url,
+    assets: {
+      directory: `${import.meta.dirname}/../../web/dist`,
+      runWorkerFirst: ["/api/*"],
+      notFoundHandling: "single-page-application",
+    },
+  },
   Effect.gen(function* () {
     const fetch = yield* HttpRouter.toHttpEffect(
       HttpApiBuilder.layer(HangarApi).pipe(

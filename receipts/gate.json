@@ -1,0 +1,116 @@
+{
+  "gate": "pass",
+  "at": "2026-10-12T14:34:11.495Z",
+  "baseUrl": "http://127.0.0.1:1337",
+  "boxReadyMedianMs": {
+    "ready": 6,
+    "fresh": 1060
+  },
+  "samples": [
+    {
+      "path": "pooled",
+      "runVia": "warmed",
+      "boxSource": "ready",
+      "boxReadyMs": 6,
+      "finishedMs": 348
+    },
+    {
+      "path": "cold",
+      "runVia": "cold",
+      "boxSource": "fresh",
+      "boxReadyMs": 1060,
+      "finishedMs": 1350
+    },
+    {
+      "path": "pooled",
+      "runVia": "warmed",
+      "boxSource": "ready",
+      "boxReadyMs": 17,
+      "finishedMs": 365
+    },
+    {
+      "path": "cold",
+      "runVia": "cold",
+      "boxSource": "fresh",
+      "boxReadyMs": 1076,
+      "finishedMs": 1343
+    },
+    {
+      "path": "pooled",
+      "runVia": "warmed",
+      "boxSource": "ready",
+      "boxReadyMs": 6,
+      "finishedMs": 340
+    },
+    {
+      "path": "cold",
+      "runVia": "cold",
+      "boxSource": "fresh",
+      "boxReadyMs": 1059,
+      "finishedMs": 1338
+    }
+  ],
+  "checks": [
+    {
+      "name": "hangar holds 3 ready boxes",
+      "passed": true,
+      "detail": "3 ready"
+    },
+    {
+      "name": "every task finished",
+      "passed": true,
+      "detail": "complete,complete,complete,complete,complete,complete"
+    },
+    {
+      "name": "pooled runs came from the warmed workflow pool",
+      "passed": true,
+      "detail": "warmed,warmed,warmed"
+    },
+    {
+      "name": "pooled tasks used a ready box",
+      "passed": true
+    },
+    {
+      "name": "cold tasks started a fresh box",
+      "passed": true
+    },
+    {
+      "name": "ready box is faster than fresh box",
+      "passed": true,
+      "detail": "median 6 ms vs 1060 ms"
+    },
+    {
+      "name": "allowed call reached the service",
+      "passed": true
+    },
+    {
+      "name": "off-contract DELETE refused before the service",
+      "passed": true
+    },
+    {
+      "name": "call to another host refused",
+      "passed": true
+    },
+    {
+      "name": "route change waited for approval, then ran",
+      "passed": true
+    },
+    {
+      "name": "no secret names inside any box",
+      "passed": true
+    },
+    {
+      "name": "service saw only allowed paths",
+      "passed": true,
+      "detail": "18 calls"
+    },
+    {
+      "name": "every call the service saw carried the key",
+      "passed": true
+    },
+    {
+      "name": "website shows both lanes finished",
+      "passed": true
+    }
+  ]
+}

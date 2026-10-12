@@ -6,11 +6,22 @@ allowBuilds:
   esbuild: true
 overrides:
   alchemy: 2.0.0-beta.81
-  effect: 4.0.1
   "@cloudflare/workers-types": 5.20261007.1
   "@effect/platform-node": 4.0.1
   "@types/node": ^24
   typescript: ^7.0.2
   vite-plus: 1.1.0
+  vite: 8.3.1
 patchedDependencies:
   alchemy@2.0.0-beta.81: patches/alchemy@2.0.0-beta.81.patch
+catalog:
+  alchemy: 2.0.0-beta.81
+  effect: 4.0.1
+  "@cloudflare/workers-types": 5.20261007.1
+  "@types/node": ^24
+  typescript: ^7.0.2
+  vite-plus: 1.1.0
+minimumReleaseAgeExclude:
+  - "@foldkit/ui@0.168.0"
+  - "@foldkit/vite-plugin@0.27.1"
+  - foldkit@0.168.0
