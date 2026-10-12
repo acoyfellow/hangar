@@ -1,0 +1,59 @@
+README.md
+  s_d58794dec92dc7::t_d852e3aaf75965 1-75
+apps/web/FOLDKIT.md
+  s_5f6d4912d3191a::t_39381933b7ed5b 1-168
+apps/web/index.html
+  s_5f6d4912d3191a::t_8fe352b6f9199a 1-13
+apps/web/package.json
+  s_d58794dec92dc7::t_c85a9bb0494680 1-26
+apps/web/src/entry.ts
+  s_5f6d4912d3191a::t_65cc1c5eace318 1-17
+apps/web/src/main.ts
+  s_5f6d4912d3191a::t_da30246ed164f2 1-434
+apps/web/src/scene.test.ts
+  s_5f6d4912d3191a::t_4e4489b224ef56 1-35
+apps/web/src/styles.css
+  s_5f6d4912d3191a::t_74e7a27d5516c9 1
+apps/web/tsconfig.json
+  s_5f6d4912d3191a::t_1b11568819d232 1-16
+apps/web/vite.config.ts
+  s_5f6d4912d3191a::t_3291aa696796ae 1-11
+apps/web/vitest.config.ts
+  s_5f6d4912d3191a::t_a384e8f319be7b 1-3
+apps/worker/src/worker.ts
+  s_5f6d4912d3191a::t_65b2140dea43c1 32-39
+package.json
+  s_d58794dec92dc7::t_68dadbf68c1d93 7-9,12-14,16
+pnpm-workspace.yaml
+  s_5f6d4912d3191a::t_b93d00e2494f08 14,17-27
+receipts/gate.json
+  s_5f6d4912d3191a::t_31da24bf7d987d 1-116
+scripts/proof.mjs
+  s_5f6d4912d3191a::t_f679f0046c36ca 1-121
+scripts/proof.sh
+  s_5f6d4912d3191a::t_a2c13c3537c6c6 1-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "439f62eeb05efaa3eac9c7cc50592bb14d74da3c",
+  "prompts": {},
+  "sessions": {
+    "s_5f6d4912d3191a": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a115b9-60e9-71ec-8331-eb33236fb839",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    },
+    "s_d58794dec92dc7": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a115e6-5bb3-75ac-b511-2988f1aebfad",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
