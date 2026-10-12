@@ -1,0 +1,35 @@
+diff --git a/lib/Cloudflare/Containers/ContainerPlatform.js b/lib/Cloudflare/Containers/ContainerPlatform.js
+index d45e2346c66f6da984d56b5d893f657fd3943fb0..345ebe2bf08851db5889ba544a8fedd0d053a575 100644
+--- a/lib/Cloudflare/Containers/ContainerPlatform.js
++++ b/lib/Cloudflare/Containers/ContainerPlatform.js
+@@ -116,8 +116,8 @@ export const ContainerPlatform = Platform("Cloudflare.Container", {
+                 signal: (signo) => Effect.sync(() => state.container.signal(signo)),
+                 getTcpPort: (port) => Effect.sync(() => fromCloudflareFetcher(httpSchemePort(state.container.getTcpPort(port)))),
+                 setInactivityTimeout: (durationMs) => Effect.promise(() => state.container.setInactivityTimeout(durationMs)),
+-                interceptOutboundHttp: (addr, binding) => toCloudflareFetcher(binding).pipe(Effect.map((binding) => state.container.interceptOutboundHttp(addr, binding))),
+-                interceptAllOutboundHttp: (binding) => toCloudflareFetcher(binding).pipe(Effect.map((binding) => state.container.interceptAllOutboundHttp(binding))),
++                interceptOutboundHttp: (addr, binding) => Effect.promise(() => state.container.interceptOutboundHttp(addr, binding.raw)),
++                interceptAllOutboundHttp: (binding) => Effect.promise(() => state.container.interceptAllOutboundHttp(binding.raw)),
+                 monitor: () => Effect.promise(() => state.container?.monitor() ?? Promise.resolve()),
+                 start: (options) => Effect.sync(() => state.container.start(options)),
+             };
+diff --git a/src/Cloudflare/Containers/ContainerPlatform.ts b/src/Cloudflare/Containers/ContainerPlatform.ts
+index ae1e53550807e41fda35306aa0b5004e4aec0451..c71a03b1af92a80050062595669956dccf0cc4af 100644
+--- a/src/Cloudflare/Containers/ContainerPlatform.ts
++++ b/src/Cloudflare/Containers/ContainerPlatform.ts
+@@ -181,13 +181,9 @@ export const ContainerPlatform: Platform<
+           setInactivityTimeout: (durationMs: number | bigint) =>
+             Effect.promise(() => state.container!.setInactivityTimeout(durationMs)),
+           interceptOutboundHttp: (addr: string, binding: Fetcher) =>
+-            toCloudflareFetcher(binding).pipe(
+-              Effect.map((binding) => state.container!.interceptOutboundHttp(addr, binding)),
+-            ),
++            Effect.promise(() => state.container!.interceptOutboundHttp(addr, binding.raw)),
+           interceptAllOutboundHttp: (binding: Fetcher) =>
+-            toCloudflareFetcher(binding).pipe(
+-              Effect.map((binding) => state.container!.interceptAllOutboundHttp(binding)),
+-            ),
++            Effect.promise(() => state.container!.interceptAllOutboundHttp(binding.raw)),
+           monitor: () => Effect.promise(() => state.container?.monitor() ?? Promise.resolve()),
+           start: (options?: ContainerStartupOptions) =>
+             Effect.sync(() => state.container!.start(options)),

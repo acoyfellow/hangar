@@ -1,0 +1,11 @@
+{
+  "name": "hangar",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.10.1",
+  "scripts": {
+    "dev": "pnpm --filter @hangar/worker dev",
+    "typecheck": "pnpm -r typecheck",
+    "proof": "bash scripts/proof.sh"
+  }
+}

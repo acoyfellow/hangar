@@ -1,0 +1,3 @@
+[submodule "vendor/cf-workflow-pool"]
+	path = vendor/cf-workflow-pool
+	url = https://github.com/dmmulroy/cf-workflow-pool
