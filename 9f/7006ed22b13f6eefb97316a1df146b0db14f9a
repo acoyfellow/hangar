@@ -1,0 +1,85 @@
+.gitignore
+  s_5f6d4912d3191a::t_e50aa6e4ba3942 1-4
+.gitmodules
+  s_5f6d4912d3191a::t_4552dc7b2d8a5a 1-3
+PLAN.md
+  s_d58794dec92dc7::t_95ad3157d4de15 1-27
+apps/worker/alchemy.run.ts
+  s_5f6d4912d3191a::t_7cdf45926e8dc4 1-13
+apps/worker/box/Dockerfile
+  s_5f6d4912d3191a::t_c2ba05552a24e1 1-4
+apps/worker/box/agent.mjs
+  s_5f6d4912d3191a::t_b3c43aa4cdf5f7 1-34
+apps/worker/package.json
+  s_5f6d4912d3191a::t_7584fc6bfe5190 1-21
+apps/worker/src/api.ts
+  s_5f6d4912d3191a::t_754219c5d74855 1-80
+apps/worker/src/box.ts
+  s_5f6d4912d3191a::t_1b5f07eb4a65a4 1-127
+apps/worker/src/contract.ts
+  s_5f6d4912d3191a::t_3141bbb9c4819c 1-92
+apps/worker/src/hangar.ts
+  s_5f6d4912d3191a::t_ec767f8ed5ecc2 1-100
+apps/worker/src/launcher.ts
+  s_5f6d4912d3191a::t_1a1ccfdb657f72 1-109
+apps/worker/src/ledger.ts
+  s_5f6d4912d3191a::t_225c906185484d 1-22
+apps/worker/src/task-run.ts
+  s_5f6d4912d3191a::t_db762a6f0d11d5 1-118
+apps/worker/src/upstream.ts
+  s_48cedcb2b3c4a6::t_f1fd9d89f1925d 1-58
+apps/worker/src/worker.ts
+  s_5f6d4912d3191a::t_84afd554c51e50 1-45
+apps/worker/tsconfig.json
+  s_5f6d4912d3191a::t_06850a1fda5a55 1-15
+package.json
+  s_5f6d4912d3191a::t_a29b759894aff3 1-11
+patches/alchemy@2.0.0-beta.81.patch
+  s_4cdf0e285652d9::t_ae5e6f47f408a9 1-35
+pnpm-lock.yaml
+  s_5f6d4912d3191a::t_c0b0dcf49bbb1c 1-4066
+pnpm-workspace.yaml
+  s_5f6d4912d3191a::t_79ec676eb13395 1-16
+vendor/cf-workflow-pool
+  s_5f6d4912d3191a::t_8c6e697bd5f981 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "9f7006ed22b13f6eefb97316a1df146b0db14f9a",
+  "prompts": {},
+  "sessions": {
+    "s_48cedcb2b3c4a6": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a13062-df19-7389-8613-4331d12c548d",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    },
+    "s_4cdf0e285652d9": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a11219-c0d2-76a7-a2cf-75eec4c2966e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    },
+    "s_5f6d4912d3191a": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a115b9-60e9-71ec-8331-eb33236fb839",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    },
+    "s_d58794dec92dc7": {
+      "agent_id": {
+        "tool": "pi",
+        "id": "01a115e6-5bb3-75ac-b511-2988f1aebfad",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Jordan Coeyman <jcoeyman@cloudflare.com>"
+    }
+  }
+}
