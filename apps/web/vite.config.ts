@@ -6,6 +6,11 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [tailwindcss(), foldkit()],
   optimizeDeps: {
-    entries: ['src/entry.ts'],
+    entries: ['src/entry.ts', 'src/box/box-main.ts'],
+  },
+  build: {
+    rollupOptions: {
+      input: { main: 'index.html', box: 'box.html' },
+    },
   },
 })

@@ -42,6 +42,34 @@ export const UpstreamCall = Schema.Struct({
   keyAccepted: Schema.Boolean,
 });
 
+export const GrantView = Schema.Struct({
+  method: Schema.String,
+  host: Schema.String,
+  pathPrefix: Schema.String,
+  needsApproval: Schema.Boolean,
+});
+
+export const BrowserTicketView = Schema.Struct({
+  taskId: Schema.String,
+  ticket: Schema.String,
+  contract: Schema.Struct({ taskId: Schema.String, goal: Schema.String, grants: Schema.Array(GrantView) }),
+  model: Schema.String,
+  tokenBudget: Schema.Number,
+});
+
+const TicketRef = Schema.Struct({ taskId: Schema.String, ticket: Schema.String });
+
+export const ToolCallRequest = Schema.Struct({
+  taskId: Schema.String,
+  ticket: Schema.String,
+  method: Schema.String,
+  url: Schema.String,
+});
+
+export const ToolCallReply = Schema.Struct({ status: Schema.Number, body: Schema.String });
+
+export const BrowserApproval = Schema.Struct({ taskId: Schema.String, method: Schema.String, url: Schema.String });
+
 export const HangarFailure = Schema.Struct({ message: Schema.String });
 
 const TaskRef = Schema.Struct({ taskId: Schema.String, runId: Schema.String, path: LaunchPath });
@@ -68,6 +96,33 @@ export const HangarApi = HttpApi.make("HangarApi").add(
       HttpApiEndpoint.post("approve", "/api/tasks/approve", {
         payload: TaskRef,
         success: Schema.Struct({ approved: Schema.Boolean }),
+        error: HangarFailure,
+      }),
+    )
+    .add(
+      HttpApiEndpoint.post("browserOpen", "/api/browser/open", {
+        success: BrowserTicketView,
+        error: HangarFailure,
+      }),
+    )
+    .add(
+      HttpApiEndpoint.post("browserTool", "/api/browser/tool", {
+        payload: ToolCallRequest,
+        success: ToolCallReply,
+        error: HangarFailure,
+      }),
+    )
+    .add(
+      HttpApiEndpoint.post("browserApprove", "/api/browser/approve", {
+        payload: BrowserApproval,
+        success: Schema.Struct({ approved: Schema.Boolean }),
+        error: HangarFailure,
+      }),
+    )
+    .add(
+      HttpApiEndpoint.post("browserReceipts", "/api/browser/receipts", {
+        payload: TicketRef,
+        success: Schema.Array(Receipt),
         error: HangarFailure,
       }),
     )

@@ -83,3 +83,65 @@ export const isAwaitingApproval = (lane: Lane): boolean =>
 export const isSettled = (lane: Lane): boolean =>
   lane.maybeView._tag === 'Some' &&
   ['complete', 'errored', 'terminated'].includes(lane.maybeView.value.status)
+
+export const BrowserGrant = Schema.Struct({
+  method: Schema.String,
+  host: Schema.String,
+  pathPrefix: Schema.String,
+  needsApproval: Schema.Boolean,
+})
+
+export const BrowserTicketSchema = Schema.Struct({
+  taskId: Schema.String,
+  ticket: Schema.String,
+  contract: Schema.Struct({ goal: Schema.String, grants: Schema.Array(BrowserGrant) }),
+  model: Schema.String,
+  tokenBudget: Schema.Number,
+})
+export type BrowserTicket = typeof BrowserTicketSchema.Type
+
+export const TranscriptLine = Schema.Union([
+  Schema.Struct({ kind: Schema.Literal('user'), text: Schema.String }),
+  Schema.Struct({ kind: Schema.Literal('assistant'), text: Schema.String }),
+  Schema.Struct({ kind: Schema.Literal('tool-call'), name: Schema.String, args: Schema.String }),
+  Schema.Struct({ kind: Schema.Literal('tool-result'), name: Schema.String, text: Schema.String, isError: Schema.Boolean }),
+])
+export type TranscriptLine = typeof TranscriptLine.Type
+
+export const BrowserBoxState = Schema.Struct({
+  status: Schema.Literals(['starting', 'running', 'idle', 'failed']),
+  lines: Schema.Array(TranscriptLine),
+  files: Schema.Array(Schema.String),
+  resumed: Schema.Boolean,
+  error: Schema.NullOr(Schema.String),
+})
+export type BrowserBoxState = typeof BrowserBoxState.Type
+
+export const BrowserReceipt = Schema.Struct({
+  at: Schema.Number,
+  method: Schema.String,
+  url: Schema.String,
+  decision: Schema.Literals(['allowed', 'refused', 'awaiting-approval']),
+  reason: Schema.String,
+  upstreamStatus: Schema.NullOr(Schema.Number),
+})
+export type BrowserReceipt = typeof BrowserReceipt.Type
+
+export const BrowserLane = Schema.Struct({
+  ticket: BrowserTicketSchema,
+  resumed: Schema.Boolean,
+  maybeState: Schema.Option(BrowserBoxState),
+  receipts: Schema.Array(BrowserReceipt),
+  promptSent: Schema.Boolean,
+})
+export type BrowserLane = typeof BrowserLane.Type
+
+export const pendingApproval = (lane: BrowserLane): BrowserReceipt | undefined => {
+  const waiting = lane.receipts.filter(receipt => receipt.decision === 'awaiting-approval')
+  const last = waiting[waiting.length - 1]
+  if (last === undefined) return undefined
+  const allowedLater = lane.receipts.some(
+    receipt => receipt.decision === 'allowed' && receipt.method === last.method && receipt.url === last.url && receipt.at > last.at,
+  )
+  return allowedLater ? undefined : last
+}

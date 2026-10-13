@@ -1,55 +1,71 @@
 {
   "gate": "pass",
-  "at": "2026-10-12T14:36:11.044Z",
+  "at": "2026-10-13T19:36:10.762Z",
   "baseUrl": "http://127.0.0.1:1337",
   "boxReadyMedianMs": {
-    "ready": 23,
-    "fresh": 1033
+    "ready": 6,
+    "fresh": 1055
   },
   "samples": [
     {
       "path": "pooled",
       "runVia": "warmed",
       "boxSource": "ready",
-      "boxReadyMs": 24,
-      "finishedMs": 1352
+      "boxReadyMs": 5,
+      "finishedMs": 333
     },
     {
       "path": "cold",
       "runVia": "cold",
       "boxSource": "fresh",
-      "boxReadyMs": 1033,
-      "finishedMs": 1340
+      "boxReadyMs": 1055,
+      "finishedMs": 1329
     },
     {
       "path": "pooled",
       "runVia": "warmed",
       "boxSource": "ready",
-      "boxReadyMs": 23,
-      "finishedMs": 1344
+      "boxReadyMs": 12,
+      "finishedMs": 332
     },
     {
       "path": "cold",
       "runVia": "cold",
       "boxSource": "fresh",
-      "boxReadyMs": 1032,
-      "finishedMs": 1334
+      "boxReadyMs": 1026,
+      "finishedMs": 1337
     },
     {
       "path": "pooled",
       "runVia": "warmed",
       "boxSource": "ready",
-      "boxReadyMs": 10,
-      "finishedMs": 1333
+      "boxReadyMs": 6,
+      "finishedMs": 326
     },
     {
       "path": "cold",
       "runVia": "cold",
       "boxSource": "fresh",
-      "boxReadyMs": 1039,
-      "finishedMs": 1338
+      "boxReadyMs": 1057,
+      "finishedMs": 1331
     }
   ],
+  "browserBox": {
+    "taskId": "browser-457cb8cf",
+    "approvalAskedMs": 10338,
+    "finishedMs": 20950,
+    "receipts": 12,
+    "escape": {
+      "ownApi": "held",
+      "internet": "held",
+      "websocket": "held",
+      "image": "held",
+      "worker": "held",
+      "parentPage": "held",
+      "parentStorage": "held",
+      "origin": "null"
+    }
+  },
   "checks": [
     {
       "name": "hangar holds 3 ready boxes",
@@ -77,7 +93,7 @@
     {
       "name": "ready box is faster than fresh box",
       "passed": true,
-      "detail": "median 23 ms vs 1033 ms"
+      "detail": "median 6 ms vs 1055 ms"
     },
     {
       "name": "allowed call reached the service",
@@ -111,6 +127,43 @@
     {
       "name": "website shows both lanes finished",
       "passed": true
+    },
+    {
+      "name": "harness booted inside the sandboxed frame",
+      "passed": true
+    },
+    {
+      "name": "after a reload the same task, files and transcript come back",
+      "passed": true
+    },
+    {
+      "name": "browser box: model calls went through the referee",
+      "passed": true
+    },
+    {
+      "name": "browser box: allowed call reached the service",
+      "passed": true
+    },
+    {
+      "name": "browser box: off-contract DELETE refused",
+      "passed": true
+    },
+    {
+      "name": "browser box: other host refused",
+      "passed": true
+    },
+    {
+      "name": "browser box: route change waited for approval, then ran",
+      "passed": true
+    },
+    {
+      "name": "browser box: agent used its shell and files",
+      "passed": true
+    },
+    {
+      "name": "browser box: frame cannot reach the network, its own API, or the page",
+      "passed": true,
+      "detail": "{\"ownApi\":\"held\",\"internet\":\"held\",\"websocket\":\"held\",\"image\":\"held\",\"worker\":\"held\",\"parentPage\":\"held\",\"parentStorage\":\"held\",\"origin\":\"null\"}"
     }
   ]
 }
