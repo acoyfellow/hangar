@@ -99,7 +99,7 @@ Reload the tab in the middle of a run and it carries on. Pi Durable writes every
 
 What makes it work:
 
-- `apps/web/src/box/browser-env.ts` is a Pi Durable `ExecutionEnv` for the browser. It passes Pi Durable's own conformance suite for environments (32 cases, over memory and over IndexedDB), and Pi Durable's JSONL storage passes its storage conformance suite on top of it.
+- `apps/web/src/box/browser-env.ts` is a Pi Durable `ExecutionEnv` for the browser. It passes Pi Durable's own conformance suite for environments (24 cases, run once over memory and once over IndexedDB), and Pi Durable's JSONL storage passes its own 24-case storage conformance suite on top of it.
 - `apps/web/src/box/harness.ts` wires the model to the referee and adds the `call_api` tool.
 - `apps/worker/src/browser-box.ts` is the referee. The page holds a ticket for one task. The ticket cannot name a model, raise the budget, or reach anything outside the contract.
 
